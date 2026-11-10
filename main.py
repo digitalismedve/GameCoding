@@ -186,9 +186,9 @@ class GameView(arcade.Window):
         inventory_slot_size = 80
         inventory_slot_gap = 12
         inventory_width = 5 * inventory_slot_size + 4 * inventory_slot_gap
-        inventory_center_x = self.width
+        inventory_center_x = self.width / 2
         inventory_left = inventory_center_x - inventory_width / 2
-        inventory_bottom = 24
+        inventory_bottom = 48
         inventory_padding = 8
         arcade.draw_lbwh_rectangle_filled(
             inventory_left - inventory_padding,
