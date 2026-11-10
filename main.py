@@ -38,6 +38,7 @@ class GameView(arcade.Window):
         self.show_coordinates = False
         self.max_health = 100
         self.health = self.max_health
+        self.selected_inventory_slot = 0
         self.dash_time = 0
         self.last_key=""
         self.game_camera = None
@@ -198,7 +199,11 @@ class GameView(arcade.Window):
 
         for slot_index in range(5):
             slot_left = inventory_left + slot_index * (inventory_slot_size + inventory_slot_gap)
-            slot_color = arcade.color.GOLD if slot_index == 0 else arcade.color.LIGHT_GRAY
+            slot_color = (
+                arcade.color.GOLD
+                if slot_index == self.selected_inventory_slot
+                else arcade.color.LIGHT_GRAY
+            )
             arcade.draw_lbwh_rectangle_filled(
                 slot_left,
                 inventory_bottom,
@@ -237,6 +242,9 @@ class GameView(arcade.Window):
 
 
 
+
+    def on_mouse_scroll(self, x: int, y: int, scroll_x: int, scroll_y: int):
+        self.selected_inventory_slot = (self.selected_inventory_slot + int(scroll_y)) % 5
 
     def on_mouse_motion(self, x:int, y:int, dx:int, dy:int):
         world_x, world_y, _ = self.game_camera.unproject((x, y))
