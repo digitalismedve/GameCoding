@@ -179,6 +179,45 @@ class GameView(arcade.Window):
 
         self.health_text.draw()
 
+        inventory_slot_size = 56
+        inventory_slot_gap = 8
+        inventory_width = 5 * inventory_slot_size + 4 * inventory_slot_gap
+        inventory_left = (self.width - inventory_width) / 2
+        inventory_bottom = 24
+        inventory_padding = 8
+        arcade.draw_lbwh_rectangle_filled(
+            inventory_left - inventory_padding,
+            inventory_bottom - inventory_padding,
+            inventory_width + 2 * inventory_padding,
+            inventory_slot_size + 2 * inventory_padding,
+            (24, 30, 42, 230),
+        )
+
+        for slot_index in range(5):
+            slot_left = inventory_left + slot_index * (inventory_slot_size + inventory_slot_gap)
+            slot_color = arcade.color.GOLD if slot_index == 0 else arcade.color.LIGHT_GRAY
+            arcade.draw_lbwh_rectangle_filled(
+                slot_left,
+                inventory_bottom,
+                inventory_slot_size,
+                inventory_slot_size,
+                slot_color,
+            )
+            arcade.draw_lbwh_rectangle_filled(
+                slot_left + 3,
+                inventory_bottom + 3,
+                inventory_slot_size - 6,
+                inventory_slot_size - 6,
+                (42, 49, 64, 255),
+            )
+            arcade.draw_text(
+                str(slot_index + 1),
+                slot_left + 7,
+                inventory_bottom + inventory_slot_size - 18,
+                arcade.color.WHITE,
+                12,
+            )
+
         if self.show_coordinates:
             controlled_sprite = self.tp if self.only_camera else self.player_sprite
             self.coordinates_text.text = (
