@@ -46,6 +46,9 @@ class GameView(arcade.Window):
         self.player_texture_right_1 = arcade.load_texture("player_right.png")
         self.player_texture_right_2 = arcade.load_texture("player_right_2.png")
         self.blank_texture = arcade.load_texture("blank.png")
+        self.axe_sprite = arcade.Sprite("box.png", scale=0.625)
+        self.axe_sprite_list = arcade.SpriteList()
+        self.axe_sprite_list.append(self.axe_sprite)
         self.tp_texture = arcade.load_texture("tp.png")
         self.tp1 = arcade.load_texture("tp_anim_1.png")
         self.tp2 = arcade.load_texture("tp_anim_2.png")
@@ -217,6 +220,10 @@ class GameView(arcade.Window):
                 arcade.color.WHITE,
                 12,
             )
+
+        self.axe_sprite.center_x = inventory_left + inventory_slot_size / 2
+        self.axe_sprite.center_y = inventory_bottom + inventory_slot_size / 2
+        self.axe_sprite_list.draw()
 
         if self.show_coordinates:
             controlled_sprite = self.tp if self.only_camera else self.player_sprite
