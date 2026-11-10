@@ -47,7 +47,7 @@ class GameView(arcade.Window):
         self.player_texture_right_1 = arcade.load_texture("player_right.png")
         self.player_texture_right_2 = arcade.load_texture("player_right_2.png")
         self.blank_texture = arcade.load_texture("blank.png")
-        self.axe_sprite = arcade.Sprite("box.png", scale=0.625)
+        self.axe_sprite = arcade.Sprite("box.png", scale=1.0)
         self.axe_sprite_list = arcade.SpriteList()
         self.axe_sprite_list.append(self.axe_sprite)
         self.tp_texture = arcade.load_texture("tp.png")
@@ -183,10 +183,11 @@ class GameView(arcade.Window):
 
         self.health_text.draw()
 
-        inventory_slot_size = 56
-        inventory_slot_gap = 8
+        inventory_slot_size = 80
+        inventory_slot_gap = 12
         inventory_width = 5 * inventory_slot_size + 4 * inventory_slot_gap
-        inventory_left = (self.width - inventory_width) / 2
+        inventory_center_x = self.width
+        inventory_left = inventory_center_x - inventory_width / 2
         inventory_bottom = 24
         inventory_padding = 8
         arcade.draw_lbwh_rectangle_filled(
