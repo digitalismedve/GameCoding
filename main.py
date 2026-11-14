@@ -396,7 +396,7 @@ class GameView(arcade.Window):
 
 
 
-        if time.time() - self.last_change >= 1.3:
+        if time.time() - self.last_change >= 0.3:
             if self.only_camera:
                 pass            
             else:
