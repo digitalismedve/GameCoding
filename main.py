@@ -42,10 +42,10 @@ class GameView(arcade.Window):
         self.dash_time = 0
         self.last_key=""
         self.game_camera = None
-        self.player_texture_left_1 = arcade.load_texture("player_left.png")
-        self.player_texture_left_2 = arcade.load_texture("player_left_2.png")
-        self.player_texture_right_1 = arcade.load_texture("player_right.png")
-        self.player_texture_right_2 = arcade.load_texture("player_right_2.png")
+        self.player_texture_left_1 = arcade.load_texture("player_left.png", scale=4)
+        self.player_texture_left_2 = arcade.load_texture("player_left_2.png", scale=4)
+        self.player_texture_right_1 = arcade.load_texture("player_right.png", scale=4)
+        self.player_texture_right_2 = arcade.load_texture("player_right_2.png", scale=4)
         self.blank_texture = arcade.load_texture("blank.png")
         self.axe_sprite = arcade.Sprite("box.png", scale=1.0)
         self.axe_sprite_list = arcade.SpriteList()
